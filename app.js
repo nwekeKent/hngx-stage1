@@ -9,7 +9,7 @@ const currentDate = new Date();
 // const utcTime = currentDate.toISOString();
 const current_day = getDayOfWeek();
 
-app.get("/hngX-1", (req, res) => {
+app.get("/api", (req, res) => {
 	const slack_name = req.query.slack_name;
 	const track = req.query.track;
 
