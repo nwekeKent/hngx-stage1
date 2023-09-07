@@ -5,7 +5,12 @@ const getDayOfWeek = require("./utils/getDay");
 //set port
 const port = process.env.PORT || 3000;
 
-const currentDate = new Date();
+const getUTCTime = () => {
+	const currentDate = new Date();
+
+	return currentDate;
+};
+
 // const utcTime = currentDate.toISOString();
 const current_day = getDayOfWeek();
 
@@ -24,7 +29,7 @@ app.get("/api", (req, res) => {
 	const jsonObject = {
 		slack_name,
 		current_day,
-		utc_time: currentDate.toISOString(),
+		utc_time: getUTCTime(),
 		track,
 		github_file_url:
 			"https://github.com/nwekeKent/hngx-stage1/blob/main/app.js",
