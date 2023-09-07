@@ -1,13 +1,15 @@
 const express = require("express");
 const app = express();
-const port = 3000;
 const getDayOfWeek = require("./utils/getDay");
+
+//set port
+const port = process.env.PORT || 3000;
 
 const currentDate = new Date();
 // const utcTime = currentDate.toISOString();
 const current_day = getDayOfWeek();
 
-app.get("/hng-1", (req, res) => {
+app.get("/hngX-1", (req, res) => {
 	const slack_name = req.query.slack_name;
 	const track = req.query.track;
 
@@ -15,16 +17,19 @@ app.get("/hng-1", (req, res) => {
 	if (!slack_name || !track) {
 		return res
 			.status(400)
-			.json({ error: "Both param1 and param2 are required" });
+			.json({ error: "Both slack_name and track are required" });
 	}
 
 	// Create a JSON object
 	const jsonObject = {
 		slack_name,
 		current_day,
-		utc_time: currentDate,
+		utc_time: currentDate.toISOString(),
 		track,
-		status: 200,
+		github_file_url:
+			"https://github.com/nwekeKent/hngx-stage1/blob/main/app.js",
+		github_repo_url: "https://github.com/nwekeKent/hngx-stage1",
+		status_code: 200,
 	};
 
 	// Send the JSON object as the response
