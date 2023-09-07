@@ -8,7 +8,9 @@ const port = process.env.PORT || 3000;
 const getUTCTime = () => {
 	const currentDate = new Date();
 
-	return currentDate;
+	const formattedDate = `${currentDate.toISOString().slice(0, -5)}Z`;
+
+	return formattedDate;
 };
 
 // const utcTime = currentDate.toISOString();
